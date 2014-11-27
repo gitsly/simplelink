@@ -90,11 +90,9 @@ led_configure:
     ldr r0, = 0xFFFFFFFF @ All as output
     str r0, [r6]
 
+		bl main
+@ Exit from C main into inifinite loop
 loop:
-		bl led_on
-		bl delay
-		bl led_off
-		bl delay
     bl loop
 
 led_on:
@@ -120,16 +118,5 @@ delay00:
 		cmp			r6, #0
 		bne			delay00
 		pop			{r4, pc}
-		
-		
-    .section ".test","x",%progbits
-test:
-		.long	0xFF
-		.long	0xFF
-		.long	0xFF
-		.long	0xFF
-		.long	0xFF
-		.long	0xFF
-		.long	0xFF
-		.end
 
+		.end
