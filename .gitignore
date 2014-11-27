@@ -1,0 +1,11 @@
+# GIT Ignore file
+*.o
+*.lss
+*.eep
+*.lst
+*.sym
+*.hex
+*.elf
+*.map
+*.bin
+\.dep/*
