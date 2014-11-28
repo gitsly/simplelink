@@ -6,19 +6,24 @@
  *
  * http://www.math.utah.edu/docs/info/ld_3.html (good)
  * 
- * arm-none-eabi-nm (run on .o files).
- * A class of U indicates an undefined reference, one of the "blanks" mentioned
- * previously. For this object, there are two: "fn_a" and "z_global". (Some
- * versions of nm may also print out a section, which will be *UND* or UNDEF in
- * this case) A class of t or T indicates where code is defined; the different
- * classes indicate whether the function is local to this file (t) or not
- * (T)—i.e. whether the function was originally declared with static. Again,
- * some systems may also show a section, something like .text A class of d or D
- * indicates an initialized global variable, and again the particular class
- * indicates whether the variable is local (d) or not (D). If there's a section,
- * it will be something like .data For an uninitialized global variable, we get
- * b if it's static/local, and B or C when it's not. The section in this case
- * will probably be something like .bss or *COM*.
+ * Utility to monitor .o files:
+ *    arm-none-eabi-nm
+ * Description of output:
+ * U: A class of U indicates an undefined reference, one of the "blanks" mentioned
+ *    previously. For this object, there are two: "fn_a" and "z_global". (Some
+ *    versions of nm may also print out a section, which will be *UND* or UNDEF in
+ *    this case)
+ *
+ * T: A class of t or T indicates where code is defined; the different
+ *    classes indicate whether the function is local to this file (t) or not
+ *    (T)—i.e. whether the function was originally declared with static. Again,
+ *    some systems may also show a section, something like .text
+ * 
+ * D: A class of d or D indicates an initialized global variable, and again the
+ *    particular class indicates whether the variable is local (d) or not (D).
+ *    If there's a section, it will be something like .data For an uninitialized
+ *    global variable, we get b if it's static/local, and B or C when it's not.
+ *    The section in this case will probably be something like .bss or *COM*.
  */
 OUTPUT_FORMAT("elf32-littlearm", "elf32-littlearm", "elf32-littlearm")
 OUTPUT_ARCH(arm)
